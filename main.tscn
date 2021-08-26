@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://timer_label.gd" type="Script" id=1]
 [ext_resource path="res://current_time_label.gd" type="Script" id=2]
-[ext_resource path="res://fonts/xolonium/Xolonium.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/digital-7.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://circles/circle-gray.png" type="Texture" id=4]
 [ext_resource path="res://circles/circle-blue.png" type="Texture" id=5]
 [ext_resource path="res://circles/circle-white.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 3 )
 
 [node name="main" type="Control"]
 __meta__ = {
@@ -37,12 +45,11 @@ __meta__ = {
 }
 
 [node name="current_time_label" type="Label" parent="."]
-margin_left = 113.0
-margin_top = 86.0
-margin_right = 271.0
-margin_bottom = 125.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = ExtResource( 3 )
+margin_left = 73.0
+margin_top = 73.0
+margin_right = 231.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.988235, 0.0235294, 0.0235294, 1 )
 text = "00:00:00"
 align = 1
@@ -53,11 +60,11 @@ __meta__ = {
 }
 
 [node name="timer_label" type="Label" parent="."]
-margin_left = 60.0
+margin_left = 73.0
 margin_top = 106.0
-margin_right = 244.0
+margin_right = 233.0
 margin_bottom = 145.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "00:00:00"
 align = 1
@@ -66,6 +73,17 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
+}
+
+[node name="time_slider" type="HSlider" parent="."]
+margin_left = 56.0
+margin_top = 232.0
+margin_right = 248.0
+margin_bottom = 248.0
+max_value = 60.0
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
 }
 
 [node name="btn_start" type="Button" parent="."]
@@ -97,6 +115,9 @@ text = "Reset"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="audio_stream_player" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 152, 56 )
 
 [connection signal="pressed" from="btn_start" to="timer_label" method="_on_btn_start_pressed"]
 [connection signal="pressed" from="btn_pause" to="timer_label" method="_on_btn_pause_pressed"]
