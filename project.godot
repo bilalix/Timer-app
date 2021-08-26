@@ -20,6 +20,10 @@ window/size/width=300
 window/size/height=300
 window/size/resizable=false
 
+[global]
+
+loop=false
+
 [physics]
 
 common/enable_pause_aware_picking=true

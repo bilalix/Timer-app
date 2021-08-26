@@ -1,6 +1,7 @@
 extends Label
 
-func _process(delta):
+func _process(_delta):
+	# get the current time and display it
 	var current_time = OS.get_time()
 	var hour = current_time.hour;
 	var minute = current_time.minute;
